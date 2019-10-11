@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Hero Detail</h1>
+<!--    [[${student.name}]]-->
+<p th:text="${student.name}"></p>
+<p th:text="${student.email}"></p>
+<p th:text="${student.rollNumber}">
+<ul>
+    <form th:action="@{/student/classroom}" method="post">
+        <li th:each="classRoom : ${classRoomList}">
+            <span th:text="${classRoom.name}"></span><input th:checked="${student.classRoomSet.contains(classRoom)}" name="classRoom" type="checkbox" th:value="${classRoom.id}">
+        </li>
+        <input type="submit" value="Save">
+    </form>
+</ul>
+</body>
+</html>
